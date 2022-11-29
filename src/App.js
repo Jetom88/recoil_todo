@@ -1,7 +1,7 @@
-import "./App.css";
+import Todo from "./components/Todo";
 
 function App() {
-  return <div className="App">초기세팅</div>;
+  return <Todo />;
 }
 
 export default App;

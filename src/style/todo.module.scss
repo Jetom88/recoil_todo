@@ -1,0 +1,163 @@
+@import "./main.module.scss";
+
+.todoContainer {
+  position: relative;
+  width: 1080px;
+  height: 720px;
+  border-radius: 5px;
+  background: #17181e;
+  overflow-y: scroll;
+
+  .todoBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    padding: 0 15px;
+    border-radius: 5px;
+    background: #20212c;
+    box-shadow: 0 3px 2px 0px rgb(31, 31, 31);
+
+    .hamburger {
+      width: 25px;
+      height: auto;
+    }
+
+    .mainText {
+      margin: 0 auto;
+      font-size: 16px;
+      font-weight: 500;
+      color: $main;
+    }
+
+    .fake {
+      color: $sub;
+      font-weight: 700;
+    }
+  }
+
+  .content {
+    display: flex;
+
+    .contentMenu {
+      width: 200px;
+      height: 685px;
+      padding: 20px;
+      background: #20212c;
+
+      .menu {
+        margin-bottom: 20px;
+        font-size: 17px;
+        font-weight: bold;
+        color: $sub;
+      }
+
+      .menuText {
+        margin-bottom: 10px;
+        font-size: 15px;
+
+        color: $main;
+      }
+    }
+
+    .contentMain {
+      position: relative;
+      margin: 0 auto;
+      padding: 30px 0;
+
+      .deco {
+        margin-bottom: 20px;
+        font-size: 35px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .addButton {
+        margin-bottom: 30px;
+        padding: 7px 10px;
+        color: white;
+        font-weight: 500;
+        border: 1px solid #414052;
+        border-radius: 10px;
+        background: #17181e;
+        cursor: pointer;
+      }
+
+      .addButtonActive {
+        margin-bottom: 30px;
+        padding: 7px 10px;
+        color: white;
+        font-weight: 500;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        background: #414052;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// TodoInput
+.addContent {
+  position: absolute;
+  transform: translate(93%, 65%);
+  width: 450px;
+  height: 300px;
+  background: $main;
+  z-index: 99999;
+}
+.input {
+  width: 300px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid $sub;
+  background: transparent;
+  color: $sub;
+
+  ::placeholder {
+    color: $sub;
+  }
+}
+
+// TodoList
+.card {
+  width: 450px;
+  height: 200px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background: #21212b;
+
+  .title {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    padding: 0 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: $sub;
+    background: #272732;
+
+    p {
+      margin-right: auto;
+    }
+
+    .menu {
+      @include flexBox(center, center);
+      gap: 10px;
+      font-size: 14px;
+      cursor: pointer;
+
+      .check {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .content {
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+  }
+}
