@@ -9,19 +9,27 @@ const TodoInput = ({ onClick }) => {
   };
   return (
     <div className={styles.addContent}>
-      <p onClick={onClick}>✕</p>
-      <input
-        placeholder="입력"
-        className={styles.input}
-        name="title"
-        onChange={onChange}
-      />
-      <input
-        placeholder="입력"
-        className={styles.input}
-        name="content"
-        onChange={onChange}
-      />
+      <div className={styles.title}>
+        <h2>Enter todo📝</h2>
+        <p onClick={onClick} className={styles.close}>
+          ✕
+        </p>
+      </div>
+      <div className={styles.inputContent}>
+        <input
+          placeholder="title"
+          className={styles.input}
+          name="title"
+          onChange={onChange}
+        />
+
+        <input
+          placeholder="content"
+          className={styles.input}
+          name="content"
+          onChange={onChange}
+        />
+      </div>
     </div>
   );
 };
