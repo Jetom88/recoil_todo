@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import styles from "../style/todo.module.scss";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
@@ -45,7 +45,10 @@ const Todo = () => {
             >
               Add Todo
             </button>
-            <TodoList />
+
+            <Suspense fallback={<div>Loading...</div>}>
+              <TodoList />
+            </Suspense>
           </div>
         </div>
       </div>

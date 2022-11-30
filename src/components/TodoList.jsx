@@ -1,11 +1,12 @@
 import styles from "../style/todo.module.scss";
 import { useRecoilValue } from "recoil";
-import { getTodo } from "../states/todo";
+import { todoSelector } from "../states/todo";
 
 const TodoList = () => {
-  const todoList = useRecoilValue(getTodo);
+  const todoList = useRecoilValue(todoSelector);
 
   const todoListData = todoList?.data;
+
   return (
     <>
       {todoListData.map((todo) => (
@@ -14,7 +15,6 @@ const TodoList = () => {
             <div className={styles.title}>
               <p>{todo.title} </p>
               <div className={styles.menu}>
-                <p className={styles.check}>✓</p>
                 <p>✕</p>
               </div>
             </div>
