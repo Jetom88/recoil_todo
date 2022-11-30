@@ -19,15 +19,15 @@ export const todoSelector = selector({
       throw Error("error");
     }
   },
-  set: async (todoData) => {
-    const res = await fetch(`${URL}/todo`, {
+  set: ({ set }, todoData) => {
+    fetch(`${URL}/todo`, {
       method: "POST",
       body: new URLSearchParams({
         title: todoData.title,
         content: todoData.content,
       }),
-    });
-
-    return res;
+    })
+      .then((res) => res.json())
+      .then(console.log);
   },
 });

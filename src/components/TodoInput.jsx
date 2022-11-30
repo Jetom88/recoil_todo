@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { todoSelector, todoState } from "../states/todo";
+import { useSetRecoilState } from "recoil";
+import { todoSelector } from "../states/todo";
 import styles from "../style/todo.module.scss";
 
 const TodoInput = ({ onClick }) => {
@@ -12,6 +12,7 @@ const TodoInput = ({ onClick }) => {
 
   const onChange = (e) => {
     const { name, value } = e.target;
+
     setForm({
       ...form,
       [name]: value,
@@ -20,11 +21,13 @@ const TodoInput = ({ onClick }) => {
 
   const onSubmit = () => {
     const { title, content } = form;
-    console.log(">>> form");
-    console.log(form);
+
     setTodo({ title: title, content: content });
 
-    setForm("");
+    setForm({
+      title: "",
+      content: "",
+    });
   };
 
   return (
@@ -39,17 +42,19 @@ const TodoInput = ({ onClick }) => {
       <div className={styles.inputContent}>
         <input
           placeholder="title"
-          className={styles.input}
+          value={form.title}
           name="title"
           onChange={onChange}
+          className={styles.input}
           autoComplete="off"
         />
 
         <input
           placeholder="content"
-          className={styles.input}
+          value={form.content}
           name="content"
           onChange={onChange}
+          className={styles.input}
           autoComplete="off"
         />
       </div>

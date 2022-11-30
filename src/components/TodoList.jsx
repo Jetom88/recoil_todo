@@ -4,7 +4,6 @@ import { todoSelector } from "../states/todo";
 
 const TodoList = () => {
   const todoList = useRecoilValue(todoSelector);
-
   const todoListData = todoList?.data;
 
   return (
