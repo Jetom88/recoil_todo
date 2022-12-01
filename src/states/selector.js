@@ -15,3 +15,10 @@ export const todoSelector = selector({
     set(todoIdState, (id) => id + 1);
   },
 });
+
+export const isShowBtn = selector({
+  key: "isShowBtn",
+  get: ({ get }) => {
+    get(Boolean);
+  },
+});

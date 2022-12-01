@@ -1,4 +1,5 @@
 import { Suspense, useState } from "react";
+
 import styles from "../style/todo.module.scss";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
@@ -7,6 +8,7 @@ const Todo = () => {
   const menu = ["💜 뭐가", "💙 없어서", "🤎 wt"];
 
   const [show, setShow] = useState(false);
+  const [isShowBtn, setIsShowBtn] = useState(true);
 
   const onClick = () => {
     setShow(!show);
@@ -38,28 +40,40 @@ const Todo = () => {
 
           <div className={styles.contentMain}>
             <p className={styles.deco}>Hello 🖐️</p>
-            <div className={styles.btn}>
-              <button
-                onClick={() => {
-                  setShow(!show);
-                }}
-                className={show ? styles.addButtonActive : styles.addButton}
-              >
-                Write Todo
-              </button>
 
-              <a
-                href="https://github.com/Jetom88/recoil_todo"
-                target="_blank"
-                rel="noreferrer"
-                className={styles.addButton}
-              >
-                github
-              </a>
+            <div className={styles.btn}>
+              {isShowBtn ? (
+                <>
+                  <button
+                    onClick={() => {
+                      setShow(!show);
+                    }}
+                    className={show ? styles.addButtonActive : styles.addButton}
+                  >
+                    Write Todo
+                  </button>
+
+                  <a
+                    href="https://github.com/Jetom88/recoil_todo"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.addButton}
+                  >
+                    github
+                  </a>
+                </>
+              ) : (
+                <p className={styles.editText}>edit...</p>
+              )}
             </div>
 
             <Suspense fallback={<div>Loading...</div>}>
-              <TodoList />
+              <TodoList
+                isShowBtn={isShowBtn}
+                isShow={() => {
+                  setIsShowBtn(!isShowBtn);
+                }}
+              />
             </Suspense>
           </div>
         </div>
