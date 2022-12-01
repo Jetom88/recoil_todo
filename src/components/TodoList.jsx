@@ -43,8 +43,6 @@ const TodoList = ({ isShowBtn, isShow }) => {
   const onSubmit = async () => {
     const { id, title, content } = editText;
 
-    console.log(title, "title");
-
     if (title.length === 0 || content.length === 0) {
       return alert("title || content 입력");
     }
