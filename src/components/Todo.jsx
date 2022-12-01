@@ -11,6 +11,7 @@ const Todo = () => {
   const onClick = () => {
     setShow(!show);
   };
+
   return (
     <>
       {show && <TodoInput onClick={onClick} />}
@@ -37,14 +38,25 @@ const Todo = () => {
 
           <div className={styles.contentMain}>
             <p className={styles.deco}>Hello 🖐️</p>
-            <button
-              onClick={() => {
-                setShow(true);
-              }}
-              className={show ? styles.addButtonActive : styles.addButton}
-            >
-              Add Todo
-            </button>
+            <div className={styles.btn}>
+              <button
+                onClick={() => {
+                  setShow(!show);
+                }}
+                className={show ? styles.addButtonActive : styles.addButton}
+              >
+                Write Todo
+              </button>
+
+              <a
+                href="https://github.com/Jetom88/recoil_todo"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.addButton}
+              >
+                github
+              </a>
+            </div>
 
             <Suspense fallback={<div>Loading...</div>}>
               <TodoList />

@@ -76,26 +76,32 @@
         color: white;
       }
 
-      .addButton {
-        margin-bottom: 30px;
-        padding: 7px 10px;
-        color: white;
-        font-weight: 500;
-        border: 1px solid #414052;
-        border-radius: 10px;
-        background: #17181e;
-        cursor: pointer;
-      }
+      .btn {
+        display: flex;
+        gap: 10px;
 
-      .addButtonActive {
-        margin-bottom: 30px;
-        padding: 7px 10px;
-        color: white;
-        font-weight: 500;
-        border: 1px solid transparent;
-        border-radius: 10px;
-        background: #414052;
-        cursor: pointer;
+        .addButton {
+          margin-bottom: 30px;
+          padding: 7px 10px;
+          color: white;
+          font-size: 14px;
+          font-weight: 500;
+          border: 1px solid #414052;
+          border-radius: 10px;
+          background: #17181e;
+          cursor: pointer;
+        }
+
+        .addButtonActive {
+          margin-bottom: 30px;
+          padding: 7px 10px;
+          color: white;
+          font-weight: 500;
+          border: 1px solid transparent;
+          border-radius: 10px;
+          background: #414052;
+          cursor: pointer;
+        }
       }
     }
   }

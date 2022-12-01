@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { todoSelector } from "../states/todo";
+import { URL } from "../constant/url";
+import { todoSelector } from "../states/selector";
 import styles from "../style/todo.module.scss";
 
 const TodoInput = ({ onClick }) => {
   const [form, setForm] = useState({
-    title: null,
-    content: null,
+    title: "",
+    content: "",
   });
   const setTodo = useSetRecoilState(todoSelector);
 
@@ -19,15 +20,31 @@ const TodoInput = ({ onClick }) => {
     });
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const { title, content } = form;
 
-    setTodo({ title: title, content: content });
+    if (title.length === 0 || content.length === 0) {
+      return alert("title || content 입력");
+    }
+
+    // 요청
+    await fetch(`${URL}/todo/`, {
+      method: "POST",
+      body: new URLSearchParams({
+        title,
+        content,
+      }),
+    });
+
+    // 요청 보내면 id 업데이트
+    setTodo();
 
     setForm({
       title: "",
       content: "",
     });
+
+    onClick();
   };
 
   return (
