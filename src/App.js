@@ -1,17 +1,27 @@
 // import Todo from "./components/Todo";
-import { useStore } from "./store/store";
+import { URL } from "./constant/url";
+import { useEffect } from "react";
+import useFetch from "./hook/useFetch";
+import useStore from "./hook/useStore";
 
 function App() {
   // return <Todo />;
-  const bears = useStore((state) => state.bears);
-  const increase = useStore((state) => state.increase);
-  const decrease = useStore((state) => state.decrease);
+  const data = useFetch(`${URL}/todo`);
+  const apiData = useStore((state) => state.apiData);
+  const addData = useStore((state) => state.addData);
+
+  useEffect(() => {
+    if (data) {
+      addData(data);
+    }
+  }, [data, addData]);
+
   return (
-    <>
-      <h1>{bears}</h1>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
-    </>
+    <div>
+      {apiData?.data?.map((apiData) => (
+        <p key={apiData.id}>{apiData.title}</p>
+      ))}
+    </div>
   );
 }
 
