@@ -4,7 +4,34 @@ import { useCallback, useEffect, useState } from "react";
 import useStore from "./hook/useStore";
 import styles from "./style/zustandSt.module.scss";
 
+const ItemEdit = ({ item, onDelete }) => {
+  const [edit, setEdit] = useState(false);
+
+  return (
+    <div className={styles.content}>
+      <div>{edit ? <input /> : <p>{item.title}</p>}</div>
+      <p>{item.content}</p>
+      <button
+        onClick={() => {
+          setEdit(!edit);
+        }}
+      >
+        edit
+      </button>
+      <button
+        onClick={() => {
+          onDelete(item.id);
+        }}
+      >
+        delete
+      </button>
+    </div>
+  );
+};
+
 function App() {
+  //zustand로 작성된 todo
+
   // return <Todo />;
   const { apiData, setData } = useStore((state) => state);
 
@@ -33,6 +60,7 @@ function App() {
 
     await fetch(`${URL}/todo`, {
       method: "POST",
+
       body: new URLSearchParams({
         title,
         content,
@@ -59,17 +87,7 @@ function App() {
   return (
     <div>
       {apiData?.map((apiData) => (
-        <div key={apiData.id} className={styles.content}>
-          <p>{apiData.title}</p>
-          <p>{apiData.content}</p>
-          <button
-            onClick={() => {
-              onDelete(apiData.id);
-            }}
-          >
-            delect
-          </button>
-        </div>
+        <ItemEdit key={apiData.id} item={apiData} onDelete={onDelete} />
       ))}
 
       <input name="title" value={form.title} onChange={onChange} />
