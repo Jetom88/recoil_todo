@@ -1,9 +1,9 @@
 import create from "zustand";
 
 const useStore = create((set) => ({
-  apiData: null,
-  addData: (data) => {
-    set((state) => ({
+  apiData: [],
+  setData(data) {
+    set(() => ({
       apiData: data,
     }));
   },
