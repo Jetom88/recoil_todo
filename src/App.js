@@ -7,6 +7,7 @@ import styles from "./style/zustandSt.module.scss";
 const ItemEdit = ({ item, onDelete }) => {
   const [edit, setEdit] = useState(false);
 
+  console.log(edit, "test");
   return (
     <div className={styles.content}>
       <div>{edit ? <input /> : <p>{item.title}</p>}</div>
