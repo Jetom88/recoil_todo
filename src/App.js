@@ -44,6 +44,14 @@ function App() {
     getData();
   };
 
+  const onDelete = async (e) => {
+    await fetch(`${URL}/todo/${e}`, {
+      method: "DELETE",
+    });
+
+    getData();
+  };
+
   useEffect(() => {
     getData();
   }, [getData]);
@@ -54,6 +62,13 @@ function App() {
         <div key={apiData.id} className={styles.content}>
           <p>{apiData.title}</p>
           <p>{apiData.content}</p>
+          <button
+            onClick={() => {
+              onDelete(apiData.id);
+            }}
+          >
+            delect
+          </button>
         </div>
       ))}
 
