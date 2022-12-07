@@ -1,9 +1,160 @@
 @import "./main.module.scss";
 
-.content {
-  width: 200px;
-  height: 100px;
-  background: black;
-  color: white;
-  margin-bottom: 10px;
+.popup {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 330px;
+  padding: 30px;
+  border-radius: 10px;
+  background: #513a82;
+  z-index: 99999;
+
+  .popupTitle {
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: #251053;
+
+    .close {
+      margin: 0 0 0 auto;
+      padding: 0;
+      color: #1e1531;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-weight: bold !important;
+    }
+  }
+
+  input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #6a4b9f;
+    background: transparent;
+    margin-bottom: 20px;
+    color: #dfd1f6;
+
+    &::placeholder {
+      color: #8977a8;
+    }
+  }
+
+  .submitBtn {
+    margin-top: 10px;
+    padding: 12px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    background: #1a0841 !important;
+    font-family: "Pretendard-bold" !important;
+    cursor: pointer;
+
+    &:hover {
+      background: #130531 !important;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 375px;
+  height: 667px;
+  padding: 20px;
+  background: #1e1531;
+  overflow-y: scroll;
+
+  .noData {
+    @include flexBox(center, center);
+    height: 100%;
+    color: #a187cb;
+    text-align: center;
+  }
+
+  .date {
+    display: flex;
+    margin-bottom: 40px;
+
+    .mainText {
+      margin-right: auto;
+      font-size: $fs-20;
+      color: #8b74b2;
+      font-family: "Pretendard-bold" !important;
+    }
+
+    .addTodo {
+      @include flexBox(center, center);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgb(108, 110, 157);
+      background: radial-gradient(
+        circle,
+        rgb(87, 89, 142) 0%,
+        rgba(58, 50, 75, 1) 100%
+      );
+      .btn {
+        margin-bottom: 3px;
+        font-size: 30px;
+        color: white;
+        border: none;
+        background: transparent;
+      }
+    }
+  }
+
+  .todoBorder {
+    height: 100%;
+    border-left: 1px solid #41256f;
+  }
+
+  .todoList {
+    margin-bottom: 30px;
+  }
+
+  .todo {
+    display: flex;
+    color: white;
+
+    .todoContent {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto 0 15px;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 8px;
+        height: 8px;
+        left: -19px;
+        bottom: 13px;
+        background: #a187cb;
+        border-radius: 50%;
+      }
+
+      .todoTitle {
+        padding-bottom: 2px;
+        font-size: 13px;
+      }
+
+      .content {
+        font-size: 17px;
+      }
+    }
+
+    button {
+      font-size: 15px;
+      border: none;
+      background: transparent;
+
+      &:first-of-type {
+        margin-right: 5px;
+      }
+    }
+  }
 }
